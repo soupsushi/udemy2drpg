@@ -7,12 +7,27 @@ public class PlayerControl : MonoBehaviour
 
     public Rigidbody2D theRB;
     public float moveSpeed;
+
     public Animator myAni;
+
+    public static PlayerControl instance;
+
+    public string areaTransitionName;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
